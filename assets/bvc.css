@@ -23,8 +23,8 @@
 
 @media (min-width: 1024px) {
     .bvc-fg {
-        width: 480px;
-        height: auto;
+        width: auto;
+        height: 480px;
         object-fit: contain;
         min-width: auto;
         min-height: auto;
