@@ -25,7 +25,7 @@ class BackgroundVideoController {
             'of-bvc-style',
             plugin_dir_url(__FILE__) . 'assets/bvc.css',
             array(),
-            '0.01'
+            date('YmdHis')
         );
     }
 
@@ -60,7 +60,7 @@ class BackgroundVideoController {
         if ($file_path) {
             $path_info = pathinfo($file_path);
             $base_path = $path_info['dirname'] . '/' . $path_info['filename'];
-            $base_url = str_replace(get_attached_file($video_id), '', $video_url) . $path_info['filename'];
+            $base_url = str_replace(basename($file_path), $path_info['filename'], $video_url);
 
             if (file_exists($base_path . '.mp4')) {
                 $mp4_url = $base_url . '.mp4';
@@ -84,10 +84,7 @@ class BackgroundVideoController {
             $wrap_class .= ' ' . $class;
         }
 
-        $style = sprintf(
-            '<style>.bvc-fg{width:%dpx}</style>',
-            $pc_width
-        );
+        $style = '';
 
         $video_attrs = 'autoplay loop muted playsinline aria-hidden="true" tabindex="-1" preload="metadata"';
         if ($poster_url) {
