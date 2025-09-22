@@ -33,7 +33,7 @@ class BackgroundVideoController {
         $atts = shortcode_atts(array(
             'id' => '',
             'poster' => '',
-            'pc_width' => '480',
+            'pc_width' => '724',
             'bg_mode' => 'blur',
             'class' => ''
         ), $atts);
@@ -51,6 +51,10 @@ class BackgroundVideoController {
         $video_url = wp_get_attachment_url($video_id);
         if (!$video_url) {
             return '';
+        }
+
+        if ($pc_width <= 0) {
+            $pc_width = 724;
         }
 
         $mp4_url = '';
@@ -83,6 +87,9 @@ class BackgroundVideoController {
         if (!empty($class)) {
             $wrap_class .= ' ' . $class;
         }
+
+        $wrap_style = '--bvc-pc-width:' . $pc_width . 'px;';
+        $wrap_style_attr = ' style="' . esc_attr($wrap_style) . '"';
 
         $style = '';
 
@@ -121,13 +128,14 @@ class BackgroundVideoController {
         }
 
         return sprintf(
-            '%s<div class="%s">
+            '%s<div class="%s"%s>
                 <video class="bvc-fg" %s>%s</video>
                 <video class="bvc-bg" %s>%s</video>
                 %s
             </div>%s',
             $style,
             esc_attr($wrap_class),
+            $wrap_style_attr,
             $video_attrs,
             $sources,
             $video_attrs,

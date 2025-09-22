@@ -26,13 +26,13 @@ License: GPLv2 or later
 == Usage ==
 
 ショートコード：
-`[bvc id="123" poster="456" pc_width="480" bg_mode="blur" class=""]`
+`[bvc id="123" poster="456" pc_width="724" bg_mode="blur" class=""]`
 
 == Attributes ==
 
 * **id** (必須): 動画添付ID
 * **poster** (任意): ポスター画像添付ID
-* **pc_width** (任意): PC表示時の幅（既定480px）
+* **pc_width** (任意): PC表示時の幅（既定724px）
 * **bg_mode** (任意): 背景モード blur|zoom|black（既定blur）
 * **class** (任意): 追加CSSクラス
 
