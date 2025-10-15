@@ -3,9 +3,15 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adjusts to browser UI */
     z-index: -1;
     overflow: hidden;
+    /* Safe area support for notched devices */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .bvc-fg {
@@ -14,7 +20,8 @@
     left: 50%;
     transform: translateX(-50%);
     width: auto;
-    height: 100vh;
+    height: 100vh; /* fallback for older browsers */
+    height: 100dvh; /* dynamic viewport height - adjusts to browser UI */
     min-height: 100%;
     object-fit: cover;
 }
@@ -40,7 +47,8 @@
         left: 0;
         transform: none;
         width: 100vw;
-        height: 100vh;
+        height: 100vh; /* fallback for older browsers */
+        height: 100dvh; /* dynamic viewport height - adjusts to browser UI */
     }
 }
 
